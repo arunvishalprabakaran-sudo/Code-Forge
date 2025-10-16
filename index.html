@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CODE FORGE - Livebeat '25</title>
+
+    <style>
+        /* 🌐 Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f4f6f9, #e0f7fa); /* gradient background */
+            color: #333;
+        }
+
+        /* 🧭 Header Section */
+        header {
+            background: linear-gradient(90deg, #0d4b74, #00bfff); /* gradient header */
+            color: white;
+            padding: 25px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .header-container {
+            max-width: 950px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .iea-logo {
+            height: 120px;
+            width: auto;
+            margin-right: 15px;
+            object-fit: contain;
+            align-self: center;
+        }
+
+        /* CODE FORGE title */
+        .header-text h1 {
+            font-size: 2rem; /* reduced size */
+            margin: 0;
+            letter-spacing: 1.5px;
+        }
+
+        /* LIVEBEAT '25 */
+        .livebeat-tag {
+            font-size: 1.4rem; /* bigger than CODE FORGE */
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ffdf00;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+            margin-top: 10px;
+            text-align: center;
+            display: block;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 1px 1px 4px #ffdf00; }
+            50% { text-shadow: 1px 1px 8px #ffdf00; }
+            100% { text-shadow: 1px 1px 4px #ffdf00; }
+        }
+
+        /* 🧩 Navigation */
+        nav {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin: 10px auto;
+            max-width: 900px;
+        }
+
+        nav a {
+            color: #0d4b74;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #00bfff;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* 📦 Sections */
+        section {
+            padding: 35px;
+            margin: 25px auto;
+            max-width: 950px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        section:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        section h2 {
+            color: #0d4b74;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        /* 📞 Contact Info */
+        .contact-info {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-info li {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-info li strong {
+            color: #0d4b74;
+        }
+
+        .insta-link {
+            text-decoration: none;
+            color: #0d4b74;
+            font-weight: 600;
+        }
+
+        .insta-link:hover {
+            color: #007bff;
+        }
+
+        /* 🚀 Start Button */
+        .start-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #0d4b74;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .start-btn:hover {
+            background-color: #16598a;
+            transform: scale(1.05);
+        }
+
+        .start-note {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Footer as thin strip */
+        footer {
+            text-align: center;
+            padding: 8px 0;
+            background-color: #ffffff;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+            margin-top: 40px;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* 📱 Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            .iea-logo {
+                margin-bottom: 10px;
+            }
+            .header-text h1 {
+                font-size: 1.8rem;
+            }
+            .livebeat-tag {
+                font-size: 2.2rem; /* responsive for tablets */
+            }
+        }
+
+        @media (max-width: 500px) {
+            .start-btn {
+                width: 100%;
+            }
+            .livebeat-tag {
+                font-size: 1.8rem; /* responsive for phones */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🏛 Header -->
+    <header>
+        <div class="header-container">
+            <img src="image/iea_logo-removebg-preview.png" alt="IEA Logo" class="iea-logo">
+            <div class="header-text">
+                <h1>CODE FORGE</h1>
+                <p>Presented by Department of Instrumentation Engineering, MIT Campus, Anna University</p>
+                <p class="livebeat-tag">LIVEBEAT '25</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 🧭 Navigation -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#structure">Event Structure</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- 📖 About Section -->
+    <section id="about">
+        <h2>About CODE FORGE</h2>
+        <p>
+            <strong>CODE FORGE</strong> is an exciting coding event where participants test their programming skills by solving challenging problems within a limited time. It’s a platform to showcase your logic, creativity, and coding prowess while competing with the best minds on campus.
+        </p>
+        <p>
+            Languages include <strong>C, C++, Python, Java, JavaScript</strong> and more — with thrilling rounds designed to push your limits. Winners receive <strong>exciting cash prizes</strong> and recognition from the Department of Instrumentation Engineering.
+        </p>
+    </section>
+
+    <!-- ⚔️ Structure Section -->
+    <section id="structure">
+        <h2>Event Structure</h2>
+        <ul>
+            <li><strong>Total Rounds:</strong> 2</li>
+            <li><strong>Round 1:</strong> 2 coding questions, 25 minutes each</li>
+            <li><strong>Final Round:</strong> 1 coding question, 25 minutes</li>
+        </ul>
+
+        <button class="start-btn" id="start-btn" data-hackerrank-url="">
+            Start Challenge
+        </button>
+        <span class="start-note" id="start-note">Not configured yet</span>
+    </section>
+
+    <!-- 📞 Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <ul class="contact-info">
+            <li><strong>Bharath R:</strong> 74180 99057</li>
+            <li><strong>Daphne Starina J:</strong> 93456 31936</li>
+        </ul>
+        <p>
+            Follow us on Instagram:
+            <a class="insta-link" href="https://instagram.com/IEA_MIT" target="_blank">@IEA_MIT</a>
+        </p>
+    </section>
+
+    <!-- ⚙️ Footer -->
+    <footer>
+        <p>&copy; 2025 Department of Instrumentation Engineering, MIT Campus, Anna University</p>
+        <p>Built with ❤️ by Arun Vishal.P for LIVEBEAT 2025</p>
+    </footer>
+
+    <!-- 🧠 Script -->
+    <script>
+        (function() {
+            const startBtn = document.getElementById('start-btn');
+            const note = document.getElementById('start-note');
+
+            startBtn.addEventListener('click', function() {
+                const url = startBtn.getAttribute('data-hackerrank-url') || '';
+                if (url.trim()) {
+                    window.open(url, '_blank', 'noopener,noreferrer');
+                } else {
+                    alert('HackerRank URL not set yet. Please update the data-hackerrank-url attribute.');
+                }
+            });
+
+            if (!startBtn.getAttribute('data-hackerrank-url')) {
+                note.textContent = 'Not configured yet';
+                note.style.color = '#9aa7b8';
+            } else {
+                note.textContent = 'Click to open challenge';
+            }
+        })();
+    </script>
+
+</body>
+</html>
