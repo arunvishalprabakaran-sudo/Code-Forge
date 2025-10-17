@@ -12,13 +12,13 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #f4f6f9, #e0f7fa); /* gradient background */
+            background: linear-gradient(135deg, #f4f6f9, #e0f7fa);
             color: #333;
         }
 
         /* 🧭 Header Section */
         header {
-            background: linear-gradient(90deg, #0d4b74, #00bfff); /* gradient header */
+            background: linear-gradient(90deg, #0d4b74, #00bfff);
             color: white;
             padding: 25px 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -43,16 +43,14 @@
             align-self: center;
         }
 
-        /* CODE FORGE title */
         .header-text h1 {
-            font-size: 2rem; /* reduced size */
+            font-size: 2rem;
             margin: 0;
             letter-spacing: 1.5px;
         }
 
-        /* LIVEBEAT '25 */
         .livebeat-tag {
-            font-size: 1.4rem; /* bigger than CODE FORGE */
+            font-size: 1.4rem;
             font-weight: 800;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -181,7 +179,7 @@
             color: #555;
         }
 
-        /* Footer as thin strip */
+        /* Footer */
         footer {
             text-align: center;
             padding: 8px 0;
@@ -204,7 +202,7 @@
                 font-size: 1.8rem;
             }
             .livebeat-tag {
-                font-size: 2.2rem; /* responsive for tablets */
+                font-size: 2.2rem;
             }
         }
 
@@ -213,7 +211,7 @@
                 width: 100%;
             }
             .livebeat-tag {
-                font-size: 1.8rem; /* responsive for phones */
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -236,6 +234,7 @@
     <nav>
         <a href="#about">About</a>
         <a href="#structure">Event Structure</a>
+        <a href="#rules">Rules</a>
         <a href="#contact">Contact</a>
     </nav>
 
@@ -254,15 +253,30 @@
     <section id="structure">
         <h2>Event Structure</h2>
         <ul>
+            <li><strong>Date:</strong> 25/10/2025</li>
+            <li><strong>Time:</strong> 10:30 PM</li>
             <li><strong>Total Rounds:</strong> 2</li>
-            <li><strong>Round 1:</strong> 2 coding questions, 25 minutes each</li>
-            <li><strong>Final Round:</strong> 1 coding question, 25 minutes</li>
+            <li><strong>Round 1:</strong> 2 coding questions (Q1 – 40 points, Q2 – 60 points), 25 minutes each</li>
+            <li><strong>Final Round:</strong> 1 coding question, 30 minutes</li>
         </ul>
 
         <button class="start-btn" id="start-btn" data-hackerrank-url="">
             Start Challenge
         </button>
         <span class="start-note" id="start-note">Not configured yet</span>
+    </section>
+
+    <!-- 📜 Rules Section -->
+    <section id="rules">
+        <h2>Rules</h2>
+        <ul>
+            <li>Participants can code in any supported language — C, C++, Python, Java, or JavaScript.</li>
+            <li>Each participant must compete individually; teamwork or external assistance is not allowed.</li>
+            <li>Total time for Round 1 is 50 minutes, and for the Final Round is 30 minutes.</li>
+            <li>Solutions will be judged based on correctness, efficiency, and code clarity.</li>
+            <li>Use of AI tools, internet resources, or plagiarism is strictly prohibited — violations will lead to disqualification.</li>
+        </ul>
+
     </section>
 
     <!-- 📞 Contact Section -->
@@ -281,7 +295,6 @@
     <!-- ⚙️ Footer -->
     <footer>
         <p>&copy; 2025 Department of Instrumentation Engineering, MIT Campus, Anna University</p>
-        <p>Built with ❤️ by Arun Vishal.P for LIVEBEAT 2025</p>
     </footer>
 
     <!-- 🧠 Script -->
