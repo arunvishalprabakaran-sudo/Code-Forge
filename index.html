@@ -152,31 +152,54 @@
             color: #007bff;
         }
 
-        /* 🚀 Start Button */
+        /* 🚀 Start Buttons Group */
+        .btn-row {
+            display:flex;
+            flex-wrap:wrap;
+            gap:16px;
+            justify-content:center;
+            margin-top:12px;
+        }
+
         .start-btn {
             display: inline-block;
-            padding: 12px 24px;
+            padding: 14px 26px;
             background-color: #0d4b74;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 15px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: background-color 0.25s ease, transform 0.12s ease;
+            box-shadow: 0 6px 14px rgba(13,75,116,0.15);
         }
 
-        .start-btn:hover {
+        .start-btn:hover:not([disabled]) {
             background-color: #16598a;
-            transform: scale(1.05);
+            transform: translateY(-2px);
+        }
+
+        .start-btn:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         .start-note {
             display: block;
-            margin-top: 8px;
-            font-size: 0.9rem;
+            margin-top: 10px;
+            font-size: 0.95rem;
             color: #555;
+            text-align: center;
+        }
+
+        .hint {
+            margin-top:8px;
+            text-align:center;
+            font-size:0.9rem;
+            color:#777;
         }
 
         /* Footer */
@@ -254,16 +277,33 @@
         <h2>Event Structure</h2>
         <ul>
             <li><strong>Date:</strong> 25/10/2025</li>
-            <li><strong>Time:</strong> 10:30 PM</li>
+            <li><strong>Time:</strong> 10:30 AM</li>
             <li><strong>Total Rounds:</strong> 2</li>
             <li><strong>Round 1:</strong> 2 coding questions (Q1 – 40 points, Q2 – 60 points), 25 minutes each</li>
             <li><strong>Final Round:</strong> 1 coding question, 30 minutes</li>
         </ul>
 
-        <button class="start-btn" id="start-btn" data-hackerrank-url="">
-            Start Challenge
-        </button>
-        <span class="start-note" id="start-note">Not configured yet</span>
+        <!-- 🧭 Round Buttons -->
+        <div class="btn-row" aria-hidden="false">
+            <!-- Round 1: Direct link -->
+            <button class="start-btn" id="round1-btn"
+                    data-hackerrank-url="https://www.hackerrank.com/code-forge-2025"
+                    title="Open Round 1 on HackerRank">
+                Start Round 1
+            </button>
+
+            <!-- Round 2: Password protected -->
+            <button class="start-btn" id="round2-btn"
+                    data-hackerrank-url="https://www.hackerrank.com/decode-the-encoded-string"
+                    title="Open Final Round (password required)">
+                Start Final Round
+            </button>
+        </div>
+
+        <div class="start-note" id="round-note">
+            Round 2 is accessible only to shortlisted participants — a password will be required.
+        </div>
+        <div class="hint">If you are shortlisted, use the access code provided by organizers to enter the Final Round.</div>
     </section>
 
     <!-- 📜 Rules Section -->
@@ -276,19 +316,18 @@
             <li>Solutions will be judged based on correctness, efficiency, and code clarity.</li>
             <li>Use of AI tools, internet resources, or plagiarism is strictly prohibited — violations will lead to disqualification.</li>
         </ul>
-
     </section>
 
     <!-- 📞 Contact Section -->
     <section id="contact">
         <h2>Contact</h2>
         <ul class="contact-info">
-            <li><strong>Bharath R:</strong> 74180 99057</li>
-            <li><strong>Daphne Starina J:</strong> 93456 31936</li>
+            <li><strong>Bharath R:</strong> +91 74180 99057</li>
+            <li><strong>Daphne Starina J:</strong> +91 93456 31936</li>
         </ul>
         <p>
             Follow us on Instagram:
-            <a class="insta-link" href="https://instagram.com/IEA_MIT" target="_blank">@IEA_MIT</a>
+            <a class="insta-link" href="https://instagram.com/IEA_MIT" target="_blank" rel="noopener noreferrer">@IEA_MIT</a>
         </p>
     </section>
 
@@ -299,25 +338,57 @@
 
     <!-- 🧠 Script -->
     <script>
-        (function() {
-            const startBtn = document.getElementById('start-btn');
-            const note = document.getElementById('start-note');
+        (function () {
+            // === Settings ===
+            // Change this to update the Round 2 access code (case-insensitive).
+            const FINAL_ROUND_ACCESS_CODE = 'FORGE2025';
 
-            startBtn.addEventListener('click', function() {
-                const url = startBtn.getAttribute('data-hackerrank-url') || '';
-                if (url.trim()) {
-                    window.open(url, '_blank', 'noopener,noreferrer');
+            // Buttons
+            const round1Btn = document.getElementById('round1-btn');
+            const round2Btn = document.getElementById('round2-btn');
+
+            // Open URL helper
+            function openUrl(url) {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
+
+            // Round 1: direct open
+            round1Btn.addEventListener('click', function () {
+                const url = this.getAttribute('data-hackerrank-url') || '';
+                if (url.trim()) openUrl(url);
+                else alert('Round 1 link is not configured.');
+            });
+
+            // Round 2: password-protected
+            round2Btn.addEventListener('click', function () {
+                const url = this.getAttribute('data-hackerrank-url') || '';
+                if (!url.trim()) {
+                    alert('Final Round link is not configured.');
+                    return;
+                }
+
+                // Prompt user for access code
+                const userInput = prompt('Enter access code for Final Round:');
+
+                // If user pressed Cancel, prompt returns null — do nothing
+                if (userInput === null) return;
+
+                // Validate (case-insensitive)
+                if (String(userInput).trim().toUpperCase() === FINAL_ROUND_ACCESS_CODE.toUpperCase()) {
+                    // Optionally show a brief message then open — using alert is minimal; you can replace with fancier UI
+                    // alert('Access granted. Opening Final Round...');
+                    openUrl(url);
                 } else {
-                    alert('HackerRank URL not set yet. Please update the data-hackerrank-url attribute.');
+                    alert('Incorrect access code. If you believe this is an error, contact the organizers.');
                 }
             });
 
-            if (!startBtn.getAttribute('data-hackerrank-url')) {
-                note.textContent = 'Not configured yet';
-                note.style.color = '#9aa7b8';
-            } else {
-                note.textContent = 'Click to open challenge';
-            }
+            // Accessibility: allow Enter key activation for focused buttons
+            [round1Btn, round2Btn].forEach(btn => {
+                btn.addEventListener('keyup', function (e) {
+                    if (e.key === 'Enter' || e.keyCode === 13) btn.click();
+                });
+            });
         })();
     </script>
 
